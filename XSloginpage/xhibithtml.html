@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>XhibitSignage Login</title>
+    <!-- <link href="https://xhibitsignage.com/css/bootstrap.min.css" rel="stylesheet"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="style.css" rel="stylesheet">
+
+    <!-- <script type="text/javascript" src="https://xhibitsignage.com/js/jquery-2.0.3.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+
+    <!-- <script type="text/javascript" src="https://xhibitsignage.com/js/jquery-ui.js"></script> -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+
+    <!-- <script src="https://xhibitsignage.com/js/bootstrap.min.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+
+
+
+        <div id="login_panel">
+            <div class="container-fluid">
+                <div class="row" id="xhibit_logo">
+                    <div class="col-md-12 text-center">
+                        <img src="./xhibit_logo.png">
+                    </div>
+                </div>
+               
+                <div class="row" id="username_input">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="Username or Email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="password_input">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input id="login-password" type="password" class="form-control" name="password" placeholder="Password">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="login_button">
+                    <div class="col-md-12">
+                        <a id="btn-login" href="#" class="btn btn-success btn-lg btn-block">Sign In</a>
+                    </div>
+                </div>
+
+                <div class="row" id="remember_forgot">
+                    <div class="col-md-6">
+                        <div class="checkbox">
+                            <label>
+                                <input id="login-remember" type="checkbox" name="remember" value="1" align="left"> Remember me
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="#" id="forgot_pw_anchor">Forgot your Password?</a>
+                    </div>
+                </div>
+               
+                <div class="row" id="sign_up_here">
+                    <div class="col-md-12 text-center">
+                        Don't have an account? <a href="#">Sign up here</a>
+                    </div>
+                </div>
+                <div class="row" id="or_login_with">
+                    <div class="col-md-12 text-center">
+                        Or sign in with
+                    </div>
+                </div>
+                <div class="row" id="social_login_icons">
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                        <a class="btn btn-primary social-login-btn social-facebook" href="/auth/facebook"><i class="fa fa-facebook"></i></a>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                        <a class="btn btn-primary social-login-btn social-twitter" href="/auth/twitter"><i class="fa fa-twitter"></i></a>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                        <a class="btn btn-primary social-login-btn social-linkedin" href="/auth/linkedin"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                        <a class="btn btn-primary social-login-btn social-google" href="/auth/google"><i class="fa fa-google-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div id="imageContainer">
+            <img id="xsphoto" class="image-bg img-responsive" src="./XS_ph1.jpeg">
+        </div>
+
+
+
+        <img class="tiled-bg img-responsive" src="./XhibitLogin_bgstatic2.png" />
+
+
+
+    </div>
+    <script src="http://www.kirupa.com/prefixfree.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var ph = $("#xsphoto");
+            var ph_src = decodeURIComponent(ph[0].src);
+
+
+
+            // console.log(ph[0].src);
+            // console.log(decodeURIComponent(ph_src));
+
+
+            // alert("hello world");
+            function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min)) + min;
+            }
+
+
+
+            
+
+            var d= new Date();
+            var hours= d.getHours();
+            var timeofday;
+
+            if(hours>=0 && hours<8){
+            	timeofday= "_morning";
+            }
+            else if(hours>=8 && hours<16){
+            	timeofday="_midday";
+            }
+            else if(hours>=16 && hours<24){
+            	timeofday="_night"
+            }
+            else{
+            	timeofday="midday";
+            }
+
+            console.log(hours);
+            console.log(timeofday);
+
+            ph_new_src+= timeofday;
+            
+
+    		var ph_new_src = ph_src.replace(/\d/g, getRandomInt(1, 4));
+            var ph_new_src= ph_new_src.replace(/\./, timeofday+".")
+            console.log(ph_new_src);
+			ph.attr("src", ph_new_src);
+        });
+    </script>
+</body>
+
+</html>
